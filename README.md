@@ -11,13 +11,13 @@
 
 Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+-   [Simple, fast routing engine](https://laravel.com/docs/routing).
+-   [Powerful dependency injection container](https://laravel.com/docs/container).
+-   Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+-   Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+-   Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+-   [Robust background job processing](https://laravel.com/docs/queues).
+-   [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
 Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
@@ -35,19 +35,19 @@ We would like to extend our thanks to the following sponsors for funding Laravel
 
 ### Premium Partners
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+-   **[Vehikl](https://vehikl.com/)**
+-   **[Tighten Co.](https://tighten.co)**
+-   **[WebReinvent](https://webreinvent.com/)**
+-   **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
+-   **[64 Robots](https://64robots.com)**
+-   **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
+-   **[Cyber-Duck](https://cyber-duck.co.uk)**
+-   **[DevSquad](https://devsquad.com/hire-laravel-developers)**
+-   **[Jump24](https://jump24.co.uk)**
+-   **[Redberry](https://redberry.international/laravel/)**
+-   **[Active Logic](https://activelogic.com)**
+-   **[byte5](https://byte5.de)**
+-   **[OP.GG](https://op.gg)**
 
 ## Contributing
 
@@ -64,3 +64,148 @@ If you discover a security vulnerability within Laravel, please send an e-mail t
 ## License
 
 The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+
+# Документация API
+
+Эта документация предоставляет информацию о том, как взаимодействовать с API-эндпоинтами для аутентификации пользователей и управления пользователями.
+
+## Базовый URL
+
+Базовый URL для всех API-эндпоинтов:
+
+## Аутентификация
+
+### Регистрация
+
+**Эндпоинт:** `POST /api/register`
+
+**Описание:** Регистрация нового пользователя.
+
+**Тело запроса:**
+
+```json
+{
+    "login": "newuser",
+    "email": "newuser@example.com",
+    "password": "password123"
+}
+```
+
+**Ответ:**
+
+```json
+{
+    "user": {
+        "id": 1,
+        "login": "newuser",
+        "email": "newuser@example.com",
+        "created_at": "2023-10-01T12:00:00Z",
+        "updated_at": "2023-10-01T12:00:00Z"
+    },
+    "token": "your-auth-token"
+}
+```
+
+### Вход
+
+**Эндпоинт:** `POST /api/login`
+
+**Описание:** Вход существующего пользователя.
+
+```json
+{
+    "login": "newuser",
+    "password": "password123"
+}
+```
+
+**Ответ:**
+
+```json
+{
+    "token": "your-auth-token"
+}
+```
+
+### Получение пользователя
+
+**Эндпоинт:** `GET /api/user/{id}`
+
+**Описание:** Получение существующего пользователя.
+
+**Ответ:**
+
+```json
+{
+    "user": {
+        "login": "newuser",
+        "password": "password123"
+    }
+}
+```
+
+### Создание пользователя
+
+**Эндпоинт:** `POST /api/user/`
+
+**Описание:** Создание пользователя через API.
+
+```json
+{
+    "login": "newuser",
+    "email": "email",
+    "password": "password123"
+}
+```
+
+**Ответ:**
+
+```json
+{
+    "user": {
+        "login": "newuser",
+        "email": "email",
+        "password": "password123"
+    }
+}
+```
+
+### Удаление
+
+**Эндпоинт:** `DELETE /api/user/{id}`
+
+**Описание:** Удаление пользователя через API.
+
+**Ответ:**
+
+```json
+{
+    "message": "User successfuly deleted"
+}
+```
+
+### Редактирование
+
+**Эндпоинт:** `PUT /api/user/{id}`
+
+**Описание:** Редактирование пользователя через API.
+
+```json
+{
+    "login": "newuser",
+    "email": "email",
+    "password": "password123"
+}
+```
+
+**Ответ:**
+
+```json
+{
+    "user": {
+        "login": "newuser",
+        "email": "email",
+        "password": "password123"
+    }
+}
+```
